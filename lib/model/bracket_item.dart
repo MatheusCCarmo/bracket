@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class BracketItem {
-  String title;
-  String imageUrl;
+  String? title;
+  String? imageUrl;
+  bool isEditMode;
 
   BracketItem({
-    @required this.title,
+    this.title,
     this.imageUrl,
+    this.isEditMode = false,
   });
 }
