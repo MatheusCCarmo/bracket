@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 
 class BracketItemWidget extends StatefulWidget {
   BracketItem bracketItem;
+  Function chooseElement;
+  bool isChoosen;
 
-  BracketItemWidget(this.bracketItem);
+  BracketItemWidget(
+    this.bracketItem,
+    this.chooseElement,
+    this.isChoosen,
+  );
 
   @override
   _BracketItemWidgetState createState() => _BracketItemWidgetState();
@@ -18,6 +24,7 @@ class _BracketItemWidgetState extends State<BracketItemWidget> {
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         height: 80,
         decoration: BoxDecoration(
+          color: widget.isChoosen ? Colors.blue : Colors.white,
           borderRadius: BorderRadius.circular(6),
           border: Border.all(color: Colors.black26),
         ),
@@ -27,7 +34,7 @@ class _BracketItemWidgetState extends State<BracketItemWidget> {
       ),
       onTap: () {
         setState(() {
-          this.widget.bracketItem.title = 'tap';
+          this.widget.chooseElement(widget.bracketItem);
         });
       },
     );
