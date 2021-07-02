@@ -5,20 +5,24 @@ import 'package:flutter/material.dart';
 
 class BracketScreen extends StatefulWidget {
   @override
-  _bracketScreenState createState() => _bracketScreenState();
+  _BracketScreenState createState() => _BracketScreenState();
 }
 
-class _bracketScreenState extends State<BracketScreen> {
+class _BracketScreenState extends State<BracketScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQueryInfo.getWidth(context) / 2,
       child: ListView(
         children: [
-          ConfrontWidget(new BracketItem(title: 'teste1'),
-              new BracketItem(title: 'teste2')),
-          ConfrontWidget(new BracketItem(title: 'teste3'),
-              new BracketItem(title: 'teste4')),
+          ConfrontWidget(
+            BracketItem(title: 'teste1'),
+            BracketItem(title: 'teste2'),
+          ),
+          ConfrontWidget(
+            BracketItem(title: 'teste3'),
+            BracketItem(title: 'teste4'),
+          ),
         ],
       ),
     );

@@ -1,32 +1,21 @@
+import 'package:bracket/src/controllers/bracket_item_controller.dart';
+import 'package:bracket/src/controllers/confront_controller.dart';
 import 'package:bracket/src/model/bracket_item.dart';
 import 'package:bracket/src/widgets/bracket_item_widget.dart';
 import 'package:flutter/material.dart';
 
-class ConfrontWidget extends StatefulWidget {
-  BracketItem element1;
-  BracketItem element2;
-  BracketItem? choosenElement;
-  bool isChoosenElement1 = false;
-  bool isChoosenElement2 = false;
+class ConfrontWidget extends StatelessWidget {
+  final BracketItem item1;
+  final BracketItem item2;
+  late final itemController1;
+  late final itemController2;
+  late final ConfrontController confrontController;
 
-  ConfrontWidget(this.element1, this.element2);
-
-  @override
-  _ConfrontWidgetState createState() => _ConfrontWidgetState();
-}
-
-class _ConfrontWidgetState extends State<ConfrontWidget> {
-  void chooseElement(BracketItem element) {
-    setState(() {
-      widget.choosenElement = element;
-      if (element == widget.element1) {
-        widget.isChoosenElement1 = !widget.isChoosenElement1;
-        widget.isChoosenElement2 = false;
-      } else {
-        widget.isChoosenElement2 = !widget.isChoosenElement2;
-        widget.isChoosenElement1 = false;
-      }
-    });
+  ConfrontWidget(this.item1, this.item2) {
+    itemController1 = BracketItemController(item1);
+    itemController2 = BracketItemController(item2);
+    confrontController = ConfrontController(
+        item1Controller: itemController1, item2Controller: itemController2);
   }
 
   @override
@@ -37,23 +26,22 @@ class _ConfrontWidgetState extends State<ConfrontWidget> {
         Expanded(
           child: Column(
             children: [
-              BracketItemWidget(
-                widget.element1,
-                chooseElement,
-                widget.isChoosenElement1,
-              ),
-              BracketItemWidget(
-                widget.element2,
-                chooseElement,
-                widget.isChoosenElement2,
-              ),
+              BracketItemWidget(item1, confrontController,
+                  confrontController.item1Controller),
+              BracketItemWidget(item2, confrontController,
+                  confrontController.item2Controller),
             ],
           ),
         ),
-        Expanded(
-          child: BracketItemWidget(
-              widget.choosenElement ?? BracketItem(), chooseElement, false),
-        )
+        // Expanded(
+        //   child: ValueListenableBuilder<BracketItem?>(
+        //     valueListenable: confrontController.choosenElement,
+        //     builder: (context, value, child) {
+        //       return BracketItemWidget(
+        //           value ?? BracketItem(), confrontController);
+        //     },
+        //   ),
+        // )
       ],
     );
   }
