@@ -22,6 +22,5 @@ class ConfrontController {
       item1Controller.isChoosen.value = false;
       // print('item2Controller ${item2Controller.isChoosen.value}');
     }
-    print(item.title);
   }
 }

@@ -33,15 +33,6 @@ class ConfrontWidget extends StatelessWidget {
             ],
           ),
         ),
-        // Expanded(
-        //   child: ValueListenableBuilder<BracketItem?>(
-        //     valueListenable: confrontController.choosenElement,
-        //     builder: (context, value, child) {
-        //       return BracketItemWidget(
-        //           value ?? BracketItem(), confrontController);
-        //     },
-        //   ),
-        // )
       ],
     );
   }
