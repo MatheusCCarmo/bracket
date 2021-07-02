@@ -1,4 +1,4 @@
-import 'package:bracket/screens/bracket_screen.dart';
+import 'package:bracket/src/screens/bracket_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text('Bracket'),
       ),
-      body: bracketScreen(),
+      body: BracketScreen(),
     );
   }
 }
