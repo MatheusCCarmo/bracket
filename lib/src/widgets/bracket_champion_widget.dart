@@ -1,18 +1,15 @@
 import 'package:bracket/src/controllers/bracket_item_controller.dart';
-import 'package:bracket/src/controllers/confront_controller.dart';
 import 'package:bracket/src/model/bracket_item.dart';
 import 'package:flutter/material.dart';
 
-class BracketItemWidget extends StatelessWidget {
+class BracketChampionWidget extends StatelessWidget {
   final int id;
   final BracketItem bracketItem;
-  final ConfrontController confrontController;
   final BracketItemController bracketItemController;
 
-  BracketItemWidget(
+  BracketChampionWidget(
     this.id,
     this.bracketItem,
-    this.confrontController,
     this.bracketItemController,
   );
 
@@ -44,9 +41,6 @@ class BracketItemWidget extends StatelessWidget {
           );
         },
       ),
-      onTap: () {
-        confrontController.chooseItem(bracketItem);
-      },
     );
   }
 }

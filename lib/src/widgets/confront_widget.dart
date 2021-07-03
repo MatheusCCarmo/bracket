@@ -20,20 +20,15 @@ class ConfrontWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: Column(
-            children: [
-              BracketItemWidget(item1, confrontController,
-                  confrontController.item1Controller),
-              BracketItemWidget(item2, confrontController,
-                  confrontController.item2Controller),
-            ],
-          ),
-        ),
-      ],
+    return Container(
+      child: Column(
+        children: [
+          BracketItemWidget(
+              1, item1, confrontController, confrontController.item1Controller),
+          BracketItemWidget(
+              2, item2, confrontController, confrontController.item2Controller),
+        ],
+      ),
     );
   }
 }
