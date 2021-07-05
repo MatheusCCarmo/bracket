@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class BracketController {
   static BracketController instance = BracketController();
 
-  ValueNotifier<int> itemsQuantity = ValueNotifier(8);
+  ValueNotifier<int> itemsQuantity = ValueNotifier(16);
 
   BracketItem champion = BracketItem(id: 1);
   List<BracketItem> finalists = [BracketItem(id: 2), BracketItem(id: 3)];

@@ -49,6 +49,26 @@ class ConfrontsColumn extends StatelessWidget {
             )
             .toList(),
       );
+    } else if (index == 3 && itemsQuantity > 4) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: bracketController
+            .getFirstColumn((itemsQuantity / 8).ceil())
+            .map(
+              (e) => BracketItemWidget(e),
+            )
+            .toList(),
+      );
+    } else if (index == rowExtent - 4) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: bracketController
+            .getLastColumn((itemsQuantity / 8).ceil())
+            .map(
+              (e) => BracketItemWidget(e),
+            )
+            .toList(),
+      );
     } else if (index == rowExtent - 3) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,7 +103,7 @@ class ConfrontsColumn extends StatelessWidget {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
-            .getLastColumn((itemsQuantity / 8).ceil())
+            .getLastColumn((itemsQuantity / 16).ceil())
             .map(
               (e) => BracketItemWidget(e),
             )
