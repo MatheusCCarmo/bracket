@@ -22,8 +22,8 @@ class BracketScreen extends StatelessWidget {
     return InteractiveViewer(
       constrained: false,
       child: Container(
-        width: (MediaQueryInfo.getWidth(context) * 2),
-        height: (MediaQueryInfo.getHeight(context) * 0.5),
+        width: (MediaQueryInfo.getWidth(context) * 4),
+        height: (MediaQueryInfo.getHeight(context) * 1.6),
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,

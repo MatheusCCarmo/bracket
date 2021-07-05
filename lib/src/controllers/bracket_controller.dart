@@ -30,4 +30,32 @@ class BracketController {
   changeQuantity(int value) {
     itemsQuantity.value = value;
   }
+
+  List<BracketItem> getFirstColumn(int itemsQuantity) {
+    if (itemsQuantity <= 1) {
+      return [champion];
+    } else if (itemsQuantity <= 2) {
+      return finalists.sublist(0, 1);
+    } else if (itemsQuantity <= 4) {
+      return semiFinalists.sublist(0, 2);
+    } else if (itemsQuantity <= 8) {
+      return roundOfEight.sublist(0, 4);
+    } else {
+      return roundOfSixteen.sublist(0, 8);
+    }
+  }
+
+  List<BracketItem> getLastColumn(int itemsQuantity) {
+    if (itemsQuantity <= 1) {
+      return [champion];
+    } else if (itemsQuantity <= 2) {
+      return finalists.sublist(1);
+    } else if (itemsQuantity <= 4) {
+      return semiFinalists.sublist(2);
+    } else if (itemsQuantity <= 8) {
+      return roundOfEight.sublist(4);
+    } else {
+      return roundOfSixteen.sublist(8);
+    }
+  }
 }

@@ -34,7 +34,7 @@ class BracketItemWidget extends StatelessWidget {
               ),
             ]),
         child: Center(
-          child: Text(bracketItem.title ?? ''),
+          child: Text(bracketItem.id.toString()),
         ),
       ),
       // },
