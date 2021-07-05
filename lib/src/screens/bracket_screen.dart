@@ -1,23 +1,17 @@
 import 'dart:math';
 
 import 'package:bracket/src/controllers/bracket_controller.dart';
-import 'package:bracket/src/controllers/bracket_item_controller.dart';
-import 'package:bracket/src/model/bracket_item.dart';
 import 'package:bracket/src/util/math_functions.dart';
 import 'package:bracket/src/util/media_query_info.dart';
-import 'package:bracket/src/widgets/bracket_champion_widget.dart';
-import 'package:bracket/src/widgets/bracket_item_widget.dart';
-import 'package:bracket/src/widgets/confront_widget.dart';
-import 'package:bracket/src/widgets/confronts_column.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class BracketScreen extends StatelessWidget {
   final int itemsQuantity;
-  late final int rowQuantity;
+  late final int rowExtent;
 
   BracketScreen({Key? key, required this.itemsQuantity}) : super(key: key) {
-    rowQuantity = (MathFunctions.log2(itemsQuantity).toInt() * 2) + 1;
+    rowExtent = (MathFunctions.log2(itemsQuantity).toInt() * 2) + 1;
   }
 
   final bracketController = BracketController.instance;
@@ -27,20 +21,44 @@ class BracketScreen extends StatelessWidget {
     return InteractiveViewer(
       constrained: false,
       child: Container(
-        width: (MediaQueryInfo.getWidth(context) * 3),
-        height: (MediaQueryInfo.getHeight(context) * 2),
+        width: (MediaQueryInfo.getWidth(context) * 2),
+        height: (MediaQueryInfo.getHeight(context) * 0.5),
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
-          itemCount: rowQuantity,
+          itemCount: rowExtent,
           itemBuilder: (context, index) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text('ts'),
-                Text('tsa'),
-              ],
-            );
+            if (index == 0) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                    (itemsQuantity / 2).ceil(), (index) => Text('0')),
+              );
+            } else if (index == 1) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                    (itemsQuantity / 4).ceil(), (index) => Text('0')),
+              );
+            } else if (index == 2) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                    (itemsQuantity / 8).ceil(), (index) => Text('0')),
+              );
+            } else if (index == 3) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                    (itemsQuantity / 4).ceil(), (index) => Text('0')),
+              );
+            } else {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                    (itemsQuantity / 2).ceil(), (index) => Text('0')),
+              );
+            }
           },
         ),
       ),
