@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:bracket/src/controllers/bracket_controller.dart';
 import 'package:bracket/src/util/math_functions.dart';
 import 'package:bracket/src/util/media_query_info.dart';
+import 'package:bracket/src/widgets/confronts_column.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
@@ -28,37 +29,10 @@ class BracketScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: rowExtent,
           itemBuilder: (context, index) {
-            if (index == 0) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: List.generate(
-                    (itemsQuantity / 2).ceil(), (index) => Text('0')),
-              );
-            } else if (index == 1) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: List.generate(
-                    (itemsQuantity / 4).ceil(), (index) => Text('0')),
-              );
-            } else if (index == 2) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: List.generate(
-                    (itemsQuantity / 8).ceil(), (index) => Text('0')),
-              );
-            } else if (index == 3) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: List.generate(
-                    (itemsQuantity / 4).ceil(), (index) => Text('0')),
-              );
-            } else {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: List.generate(
-                    (itemsQuantity / 2).ceil(), (index) => Text('0')),
-              );
-            }
+            return ConfrontsColumn(
+                index: index,
+                rowExtent: rowExtent,
+                itemsQuantity: itemsQuantity);
           },
         ),
       ),
