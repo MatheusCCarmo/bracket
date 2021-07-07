@@ -1,42 +1,31 @@
 import 'package:bracket/src/controllers/bracket_controller.dart';
-import 'package:bracket/src/widgets/bracket_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class ConfrontsColumn extends StatelessWidget {
   final int index;
   final int rowExtent;
   final int itemsQuantity;
-  late BracketController bracketController;
+  final BracketController bracketController = BracketController();
 
   ConfrontsColumn({
     Key? key,
     required this.index,
     required this.itemsQuantity,
     required this.rowExtent,
-  }) : super(key: key) {
-    bracketController = BracketController.instance;
-  }
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     if (index == 0) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: bracketController
-            .getFirstColumn(itemsQuantity)
-            .map(
-              (e) => BracketItemWidget(e),
-            )
-            .toList(),
+        children: bracketController.getFirstColumn(itemsQuantity).toList(),
       );
     } else if (index == 1) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
             .getFirstColumn((itemsQuantity / 2).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
             .toList(),
       );
     } else if (index == 2) {
@@ -44,9 +33,6 @@ class ConfrontsColumn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
             .getFirstColumn((itemsQuantity / 4).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
             .toList(),
       );
     } else if (index == 3 && itemsQuantity > 4) {
@@ -54,9 +40,6 @@ class ConfrontsColumn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
             .getFirstColumn((itemsQuantity / 8).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
             .toList(),
       );
     } else if (index == rowExtent - 4) {
@@ -64,9 +47,6 @@ class ConfrontsColumn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
             .getLastColumn((itemsQuantity / 8).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
             .toList(),
       );
     } else if (index == rowExtent - 3) {
@@ -74,9 +54,6 @@ class ConfrontsColumn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
             .getLastColumn((itemsQuantity / 4).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
             .toList(),
       );
     } else if (index == rowExtent - 2) {
@@ -84,29 +61,19 @@ class ConfrontsColumn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
             .getLastColumn((itemsQuantity / 2).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
             .toList(),
       );
     } else if (index == rowExtent - 1) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: bracketController
-            .getLastColumn((itemsQuantity).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
-            .toList(),
+        children:
+            bracketController.getLastColumn((itemsQuantity).ceil()).toList(),
       );
     } else {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: bracketController
             .getLastColumn((itemsQuantity / 16).ceil())
-            .map(
-              (e) => BracketItemWidget(e),
-            )
             .toList(),
       );
     }

@@ -15,14 +15,16 @@ class BracketScreen extends StatelessWidget {
     rowExtent = (MathFunctions.log2(itemsQuantity).toInt() * 2) + 1;
   }
 
-  final bracketController = BracketController.instance;
+  final bracketController = BracketController();
 
   @override
   Widget build(BuildContext context) {
     return InteractiveViewer(
       constrained: false,
       child: Container(
-        width: (MediaQueryInfo.getWidth(context) * 4),
+        width: (MediaQueryInfo.getWidth(context) *
+            bracketController.allItems.length /
+            7),
         height: (MediaQueryInfo.getHeight(context) * 1.6),
         child: ListView.builder(
           physics: NeverScrollableScrollPhysics(),

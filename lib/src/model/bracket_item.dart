@@ -1,10 +1,10 @@
 class BracketItem {
-  int id;
+  int? id;
   String? title;
   String? imageUrl;
 
   BracketItem({
-    required this.id,
+    this.id,
     this.title,
     this.imageUrl,
   });

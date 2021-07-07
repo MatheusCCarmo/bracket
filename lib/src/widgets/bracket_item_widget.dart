@@ -1,22 +1,21 @@
-import 'package:bracket/src/controllers/bracket_item_controller.dart';
-import 'package:bracket/src/controllers/confront_controller.dart';
+import 'package:bracket/src/controllers/bracket_controller.dart';
 import 'package:bracket/src/model/bracket_item.dart';
 import 'package:flutter/material.dart';
 
 class BracketItemWidget extends StatelessWidget {
-  final BracketItem bracketItem;
+  final int id;
+  BracketItem? bracketItem;
 
-  BracketItemWidget(
+  BracketItemWidget({
+    required this.id,
     this.bracketItem,
-  );
+  });
+
+  BracketController bracketController = BracketController();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      // child: ValueListenableBuilder<bool>(
-      // valueListenable: bracketItemController.isChoosen,
-      // builder: (context, value, child) {
-      // return
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
         height: 80,
@@ -34,14 +33,14 @@ class BracketItemWidget extends StatelessWidget {
               ),
             ]),
         child: Center(
-          child: Text(bracketItem.id.toString()),
+          child: Text(bracketItem?.title ?? id.toString()),
         ),
       ),
-      // },
-      // ),
-      // onTap: () {
-      //   // confrontController.chooseItem(bracketItem);
-      // },
+      onTap: () {
+        if (bracketItem != null) {
+          // bracketController.chooseItem(id, bracketItem!);
+        }
+      },
     );
   }
 }
